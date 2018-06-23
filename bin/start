@@ -7,5 +7,5 @@ WEBHOOK_CONF=/config/webhooks/hooks.json
 
 
 exec $TRANSMISSION -f --no-portmap --config-dir $CONFIG_DIR --log-info &
-exec webhook -hooks $WEBHOOK_CONF -verbose &
 exec nginx -g 'daemon-off';
+exec webhook -hooks $WEBHOOK_CONF -verbose
