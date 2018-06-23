@@ -10,7 +10,8 @@ RUN apt-get update && apt-get install -y transmission-cli \
 	youtube-dl \
 	curl \
 	jq \
-	openjdk-8-jre
+	openjdk-8-jre \
+	webhook
 
 # Install filebot
 # Template taken from: https://github.com/filebot/plugins/blob/master/docker/Dockerfile
