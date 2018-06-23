@@ -29,9 +29,10 @@ RUN placeholder="" \
     && rm "$FILEBOT_PACKAGE"
  
 ONBUILD COPY start /usr/bin/
-ONBUILD COPY config/nginx /etc/nginx
-ONBUILD COPY config/transmission /config/transmission
 ONBUILD COPY config/beet /config/beet
 ONBUILD COPY config/filebot /config/filebot
+ONBUILD COPY config/transmission /config/transmission
+ONBUILD COPY config/nginx /etc/nginx
+ONBUILD COPY config/webhook /config/webhook
 
 ONBUILD CMD ["start"]
