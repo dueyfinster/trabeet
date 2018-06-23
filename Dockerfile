@@ -2,6 +2,8 @@ FROM ubuntu:18.04
 
 EXPOSE 9091 9000
 
+RUN mkdir -p /watch
+
 RUN apt-get update && apt-get install -y transmission-cli \
 	transmission-common \
 	transmission-daemon \
@@ -26,9 +28,7 @@ RUN placeholder="" \
     && dpkg -i "$FILEBOT_PACKAGE" \
     && rm "$FILEBOT_PACKAGE"
  
-RUN mkdir -p /watch
-COPY bin/* /usr/bin/
-
+ONBUILD COPY start /usr/bin/
 ONBUILD COPY config/nginx /etc/nginx
 ONBUILD COPY config/transmission /config/transmission
 ONBUILD COPY config/beet /config/beet
