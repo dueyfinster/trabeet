@@ -1,0 +1,10 @@
+#!/bin/bash
+
+CONFIG_DIR=/config/transmission
+SETTINGS=$CONFIG_DIR/settings.json
+TRANSMISSION=/usr/bin/transmission-daemon
+WEBHOOK_CONF=/config/webhooks/hooks.json
+
+
+exec $TRANSMISSION -f --no-portmap --config-dir $CONFIG_DIR --log-info &
+exec webhook -hooks $WEBHOOK_CONF -verbose
