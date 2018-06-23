@@ -11,7 +11,8 @@ RUN apt-get update && apt-get install -y transmission-cli \
 	curl \
 	jq \
 	openjdk-8-jre \
-	webhook
+	webhook \
+	nginx
 
 # Install filebot
 # Template taken from: https://github.com/filebot/plugins/blob/master/docker/Dockerfile
@@ -28,6 +29,7 @@ RUN placeholder="" \
 RUN mkdir -p /watch
 COPY bin/* /usr/bin/
 
+ONBUILD COPY config/nginx /etc/nginx
 ONBUILD COPY config/transmission /config/transmission
 ONBUILD COPY config/beet /config/beet
 ONBUILD COPY config/filebot /config/filebot
