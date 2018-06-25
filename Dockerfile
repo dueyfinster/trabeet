@@ -40,6 +40,7 @@ RUN placeholder="" \
 # Add required config files
 COPY ./config/beets/config.yaml $HOME/.config/beets/config.yaml
 COPY ./config/transmission/settings.json /etc/transmission-daemon/settings.json
+COPY ./config/filebot/filebot.conf $HOME/.filebot/filebot.conf
 
 # Add required config file (on build)
 ONBUILD COPY config/filebot /config/filebot
