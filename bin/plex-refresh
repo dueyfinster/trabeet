@@ -1,0 +1,6 @@
+#!/bin/bash
+# Refreshes the Plex libary
+test -z $1 && echo "need library ID number to refresh! $0 <message>" && exit 1
+
+# Refresh Music Library
+curl http://"$PLEX_HOST":"$PLEX_PORT"/library/sections/$1/refresh?X-Plex-Token="$PLEX_TOKEN"
