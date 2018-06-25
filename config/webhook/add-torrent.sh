@@ -11,4 +11,4 @@ TRANSMISSION=/usr/bin/transmission-cli
 # SESSID=$(curl --silent --anyauth  "http://$HOST:$PORT/transmission/rpc" | sed 's/.*<code>//g;s/<\/code>.*//g')
 # curl --silent --anyauth --header "$SESSID" "http://$HOST:$PORT/transmission/rpc" -d "{\"method\":\"torrent-add\",\"arguments\":{\"paused\":\"false\",\"filename\":\"$1\"}}"
 
-"$TRANSMISSION" "$1" -w "$DOWNLOAD_DIR"/"$2"
+"$TRANSMISSION" -w "$DOWNLOAD_DIR"/"$2" "$1"
