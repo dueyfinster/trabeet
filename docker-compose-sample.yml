@@ -1,0 +1,40 @@
+version: '2'
+services:
+  trabeet:
+      container_name: trabeet
+      build: ./src
+      restart: always
+      expose:
+        - "8080"
+      links:
+        - plex
+      ports:
+        - "51413:51413"
+        - "8080:8080"
+      volumes:
+        - ./downloads:/downloads
+        - /home/ngrogan/media:/media:rw 
+        - ./watch:/watch
+  plex:
+    container_name: plex
+    image: plexinc/pms-docker:plexpass
+    restart: always
+    volumes:
+      - ./config/plex:/config:rw
+      - /home/ngrogan/media:/data:rw
+    expose:
+      - "32400"
+    ports:
+      - "32400:32400"
+      - "33400:33400"
+      - "33433:33433"
+    network_mode: "host"
+    # devices:
+    #   - /dev/dvb/adapter0/demux0
+    #   - /dev/dvb/adapter0/dvr0
+    #   - /dev/dvb/adapter0/frontend0
+    #   - /dev/dvb/adapter0/net0
+    #   - /dev/dvb/adapter1/demux0
+    #   - /dev/dvb/adapter1/dvr0
+    #   - /dev/dvb/adapter1/frontend0
+    #   - /dev/dvb/adapter1/net0
