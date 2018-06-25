@@ -6,7 +6,7 @@ EXPOSE 9091 9000
 RUN mkdir -p /watch $HOME/.config/beets /etc/transmission-daemon
 
 # Add start script
-ADD bin/start /usr/bin/
+COPY bin/start /usr/bin/
 
 RUN apt-get update && apt-get install -y transmission-cli \
 	transmission-common \
@@ -35,8 +35,8 @@ RUN placeholder="" \
     && rm "$FILEBOT_PACKAGE"
 
 # Add required config files
-ADD config/beets/config.yaml $HOME/.config/beets
-ADD config/transmission/settings.json /etc/transmission-daemon/
+COPY ./config/beets/config.yaml $HOME/.config/beets/config.yaml
+COPY ./config/transmission/settings.json /etc/transmission-daemon/settings.json
 
 # Add required config file (on build)
 ONBUILD COPY config/filebot /config/filebot
