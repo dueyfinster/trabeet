@@ -38,13 +38,11 @@ RUN placeholder="" \
     && rm "$FILEBOT_PACKAGE"
 
 # Add required config files
-COPY ./config/beets/config.yaml $HOME/.config/beets/config.yaml
-COPY ./config/transmission/settings.json /etc/transmission-daemon/settings.json
-COPY ./config/filebot/filebot.conf $HOME/.filebot/filebot.conf
+COPY config/beets/config.yaml $HOME/.config/beets/config.yaml
+COPY config/transmission/settings.json $HOME/.config/transmission-daemon/settings.json
+COPY config/filebot/filebot.conf $HOME/.filebot/filebot.conf
 
 # Add required config file (on build)
-ONBUILD COPY config/filebot /config/filebot
-ONBUILD COPY config/transmission /config/transmission
 ONBUILD COPY config/nginx /etc/nginx
 ONBUILD COPY config/webhook /config/webhook
 
