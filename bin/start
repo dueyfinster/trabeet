@@ -3,9 +3,49 @@
 CONFIG_DIR=/config/transmission
 SETTINGS=$CONFIG_DIR/settings.json
 TRANSMISSION=/usr/bin/transmission-daemon
-WEBHOOK_CONF=/config/webhooks/hooks.json
+WEBHOOK=/usr/bin/webhook
+WEBHOOK_CONF=/config/webhook/hooks.json
 
+# Start the first process
+$WEBHOOK -hooks $WEBHOOK_CONF -verbose &
+status=$?
+if [ $status -ne 0 ]; then
+  echo "Failed to start webhook: $status"
+  exit $status
+fi
 
-exec $TRANSMISSION -f --no-portmap --config-dir $CONFIG_DIR --log-info &
-exec nginx -g 'daemon-off';
-exec webhook -hooks $WEBHOOK_CONF -verbose
+# Start the second process
+$TRANSMISSION -f --no-portmap --config-dir $CONFIG_DIR --log-info &
+status=$?
+if [ $status -ne 0 ]; then
+  echo "Failed to start transmission: $status"
+  exit $status
+fi
+
+nginx
+status=$?
+if [ $status -ne 0 ]; then
+  echo "Failed to start nginx: $status"
+  exit $status
+fi
+
+# Naive check runs checks once a minute to see if either of the processes exited.
+# This illustrates part of the heavy lifting you need to do if you want to run
+# more than one service in a container. The container exits with an error
+# if it detects that either of the processes has exited.
+# Otherwise it loops forever, waking up every 60 seconds
+
+while sleep 60; do
+  ps aux |grep webhook |grep -q -v grep
+  PROCESS_1_STATUS=$?
+  ps aux |grep nginx |grep -q -v grep
+  PROCESS_2_STATUS=$?
+  ps aux |grep transmission |grep -q -v grep
+  PROCESS_3_STATUS=$?
+  # If the greps above find anything, they exit with 0 status
+  # If they are not both 0, then something is wrong
+  if [ $PROCESS_1_STATUS -ne 0 -o $PROCESS_2_STATUS -ne 0 -o $PROCESS_3_STATUS -ne 0 ]; then
+    echo "One of the processes has already exited."
+    exit 1
+  fi
+done
