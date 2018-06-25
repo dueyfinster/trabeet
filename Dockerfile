@@ -45,7 +45,7 @@ COPY config/webhook/* /opt/webhook
 
 # Add required config file (on build)
 ONBUILD COPY config/nginx /etc/nginx
-ONBUILD COPY config/webhook /config/webhook
+ONBUILD COPY config/webhook /opt/webhook
 
 # Run start script (on build)
 ONBUILD CMD ["start"]
