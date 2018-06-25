@@ -3,7 +3,7 @@ FROM ubuntu:18.04
 EXPOSE 8080
 
 # Make directories needed
-RUN mkdir -p /watch $HOME/.config/beets /etc/transmission-daemon
+RUN mkdir -p /watch
 
 # Volumes to expose
 VOLUME ["/media", "/downloads", "/watch"]
@@ -38,9 +38,9 @@ RUN placeholder="" \
     && rm "$FILEBOT_PACKAGE"
 
 # Add required config files
-COPY config/beets/config.yaml $HOME/.config/beets/config.yaml
-COPY config/transmission/settings.json $HOME/.config/transmission-daemon/settings.json
-COPY config/filebot/filebot.conf $HOME/.filebot/filebot.conf
+COPY config/beets/config.yaml /root/.config/beets/config.yaml
+COPY config/transmission/settings.json /root/.config/transmission-daemon/settings.json
+COPY config/filebot/filebot.conf /root/.filebot/filebot.conf
 
 # Add required config file (on build)
 ONBUILD COPY config/nginx /etc/nginx
