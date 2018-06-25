@@ -1,10 +1,10 @@
 #!/bin/bash
 
-CONFIG_DIR=/config/transmission
+CONFIG_DIR=/root/.config/transmission
 SETTINGS=$CONFIG_DIR/settings.json
 TRANSMISSION=/usr/bin/transmission-daemon
 WEBHOOK=/usr/bin/webhook
-WEBHOOK_CONF=/config/webhook/hooks.json
+WEBHOOK_CONF=/opt/webhook/hooks.json
 
 # Start the first process
 $WEBHOOK -hooks $WEBHOOK_CONF -verbose &
