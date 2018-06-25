@@ -1,9 +1,12 @@
 FROM ubuntu:18.04
 
-EXPOSE 9091 9000
+EXPOSE 8080
 
 # Make directories needed
 RUN mkdir -p /watch $HOME/.config/beets /etc/transmission-daemon
+
+# Volumes to expose
+VOLUME ["/media", "/downloads", "/watch"]
 
 # Add start script
 COPY bin/start /usr/bin/
