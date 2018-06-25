@@ -15,7 +15,7 @@ if [ $status -ne 0 ]; then
 fi
 
 # Start the second process
-$TRANSMISSION -f --no-portmap --config-dir $CONFIG_DIR --log-info &
+$TRANSMISSION -f --no-portmap --log-info &
 status=$?
 if [ $status -ne 0 ]; then
   echo "Failed to start transmission: $status"
