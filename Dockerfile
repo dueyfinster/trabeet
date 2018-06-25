@@ -2,9 +2,9 @@ FROM ubuntu:18.04
 
 EXPOSE 9091 9000
 
+RUN mkdir -p /watch $HOME/.config/beets
 ADD start /usr/bin/
-
-RUN mkdir -p /watch
+ADD config/beets/config.yaml $HOME/.config/beets
 
 RUN apt-get update && apt-get install -y transmission-cli \
 	transmission-common \
