@@ -8,8 +8,8 @@ RUN mkdir -p /watch
 # Volumes to expose
 VOLUME ["/media", "/downloads", "/watch"]
 
-# Add start script
-COPY bin/start /usr/bin/
+# Copy Binaries
+COPY bin/* /usr/bin/
 
 RUN apt-get update && apt-get install -y transmission-cli \
 	transmission-common \
