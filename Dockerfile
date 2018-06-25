@@ -18,7 +18,8 @@ RUN apt-get update && apt-get install -y transmission-cli \
 	openjdk-8-jre \
 	webhook \
 	bs1770gain \
-	nginx && \
+	nginx \
+	python-pip && \
 	pip install beets
 
 # Install filebot
