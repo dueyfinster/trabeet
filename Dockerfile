@@ -7,14 +7,15 @@ RUN mkdir -p /watch
 RUN apt-get update && apt-get install -y transmission-cli \
 	transmission-common \
 	transmission-daemon \
-	beets \
 	ffmpeg \
 	youtube-dl \
 	curl \
 	jq \
 	openjdk-8-jre \
 	webhook \
-	nginx
+	mp3gain \
+	nginx && \
+	pip install beets
 
 # Install filebot
 # Template taken from: https://github.com/filebot/plugins/blob/master/docker/Dockerfile
