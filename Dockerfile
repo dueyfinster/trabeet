@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y transmission-cli \
 	jq \
 	openjdk-8-jre \
 	webhook \
-	mp3gain \
+	bs1770gain \
 	nginx && \
 	pip install beets
 
