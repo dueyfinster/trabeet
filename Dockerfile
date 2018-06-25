@@ -2,9 +2,11 @@ FROM ubuntu:18.04
 
 EXPOSE 9091 9000
 
-RUN mkdir -p /watch $HOME/.config/beets
+# Make directories needed
+RUN mkdir -p /watch $HOME/.config/beets /etc/transmission-daemon
+
+# Add start script
 ADD bin/start /usr/bin/
-ADD config/beets/config.yaml $HOME/.config/beets
 
 RUN apt-get update && apt-get install -y transmission-cli \
 	transmission-common \
@@ -30,11 +32,16 @@ RUN placeholder="" \
     && echo "$FILEBOT_SHA256 *$FILEBOT_PACKAGE" | sha256sum --check --strict \
     && dpkg -i "$FILEBOT_PACKAGE" \
     && rm "$FILEBOT_PACKAGE"
- 
 
+# Add required config files
+ADD config/beets/config.yaml $HOME/.config/beets
+ADD config/transmission/settings.json /etc/transmission-daemon/
+
+# Add required config file (on build)
 ONBUILD COPY config/filebot /config/filebot
 ONBUILD COPY config/transmission /config/transmission
 ONBUILD COPY config/nginx /etc/nginx
 ONBUILD COPY config/webhook /config/webhook
 
+# Run start script (on build)
 ONBUILD CMD ["start"]
