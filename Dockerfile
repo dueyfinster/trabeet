@@ -2,6 +2,8 @@ FROM ubuntu:18.04
 
 EXPOSE 9091 9000
 
+ADD start /usr/bin/
+
 RUN mkdir -p /watch
 
 RUN apt-get update && apt-get install -y transmission-cli \
@@ -29,7 +31,7 @@ RUN placeholder="" \
     && dpkg -i "$FILEBOT_PACKAGE" \
     && rm "$FILEBOT_PACKAGE"
  
-ONBUILD COPY start /usr/bin/
+
 ONBUILD COPY config/beet /config/beet
 ONBUILD COPY config/filebot /config/filebot
 ONBUILD COPY config/transmission /config/transmission
