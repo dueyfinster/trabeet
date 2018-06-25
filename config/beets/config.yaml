@@ -1,0 +1,53 @@
+directory: /output
+library: /config/beet/musiclibrary.blb
+art_filename: albumart
+threaded: yes
+original_date: no
+per_disc_numbering: no
+
+paths:
+    default: $albumartist/$album%aunique{}/$track - $title
+    singleton: Non-Album/$artist - $title
+    comp: Compilations/$album%aunique{}/$track - $title
+    albumtype_soundtrack: Soundtracks/$album/$track $title 
+
+import:
+  write: yes
+  copy: no
+  move: yes
+  log: /var/log/beets
+  incremental: yes
+
+ignore: .AppleDouble ._* *~ .DS_Store
+ignore_hidden: yes
+plugins: [chroma, plexupdate, fetchart, embedart, scrub, lastgenre, convert]
+
+chroma:
+  auto: yes
+
+#replaygain:
+#  backend: gstreamer
+
+embedart:
+  auto: yes
+
+fetchart:
+  auto: yes
+
+scrub:
+  auto: yes
+
+lastgenre:
+  auto: yes
+  source: album
+
+plex:
+  host: plex
+  port: 32400
+
+convert:
+  auto: no
+  ffmpeg: /usr/bin/ffmpeg
+  opts: -ab 320k -ac 2 -ar 48000
+  max_bitrate: 320
+  threads: 1
