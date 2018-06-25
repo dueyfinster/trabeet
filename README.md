@@ -3,6 +3,7 @@ Docker image for downloading for Plex using Transmission & youtube-dl, all
 controlled via webhooks.
 
 webhook (magnet uri) -> Transmission -> Beets/Filebot -> Plex Library
+
 webhook (YouTube URL) -> youtube-dl -> Beets/Filebot -> Plex Library
 
 # To use
