@@ -1,5 +1,5 @@
-directory: /output
-library: /config/beet/musiclibrary.blb
+plugins: fetchart embedart convert scrub replaygain lastgenre chroma web
+directory: /media/Music
 art_filename: albumart
 threaded: yes
 original_date: no
@@ -15,7 +15,7 @@ import:
   write: yes
   copy: no
   move: yes
-  log: /var/log/beets
+  log: /var/log/beets.log
   incremental: yes
 
 ignore: .AppleDouble ._* *~ .DS_Store
@@ -44,6 +44,18 @@ lastgenre:
 plex:
   host: plex
   port: 32400
+
+replace:
+    '^\.': _
+    '[\x00-\x1f]': _
+    '[<>:"\?\*\|]': _
+    '[\xE8-\xEB]': e
+    '[\xEC-\xEF]': i
+    '[\xE2-\xE6]': a
+    '[\xF2-\xF6]': o
+    '[\xF8]': o
+    '\.$': _
+    '\s+$': ''
 
 convert:
   auto: no
