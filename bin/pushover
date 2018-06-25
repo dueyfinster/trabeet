@@ -1,0 +1,8 @@
+#!/bin/bash
+test -z $1 && echo "need message to send! $0 <message>" && exit 1
+
+curl -s \
+  --form-string "token=$PUSHOVER_TOKEN" \
+  --form-string "user=$PUSHOVER_USER" \
+  --form-string "message=$1" \
+  https://api.pushover.net/1/messages.json
