@@ -41,7 +41,7 @@ RUN placeholder="" \
 COPY config/beets/config.yaml /root/.config/beets/config.yaml
 COPY config/transmission/settings.json /root/.config/transmission-daemon/settings.json
 COPY config/filebot/filebot.conf /root/.filebot/filebot.conf
-COPY config/webhook/* /opt/webhook
+COPY config/webhook/* /opt/webhook/
 
 # Add required config file (on build)
 ONBUILD COPY config/nginx /etc/nginx
