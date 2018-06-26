@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 test -z $1 && echo "need video link! $0 <video link>" && exit 1
 test -z $2 && echo "need directory destination! $0 <video link> <destination>" && exit 1
 
