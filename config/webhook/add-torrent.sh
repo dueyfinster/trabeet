@@ -1,4 +1,7 @@
 #!/bin/bash
+set -x
+exec &>/dev/stdout
+
 test -z $1 && echo "need magnet link! $0 <magnet link>" && exit 1
 test -z $2 && echo "need directory destination! $0 <magnet link> <destination>" && exit 1
 
