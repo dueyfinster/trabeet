@@ -5,6 +5,9 @@ threaded: yes
 original_date: no
 per_disc_numbering: no
 
+match:
+  strong_rec_thresh: 0.35
+
 paths:
     default: $albumartist/$album%aunique{}/$track - $title
     singleton: Non-Album/$artist - $title
@@ -16,10 +19,8 @@ import:
   copy: no
   move: yes
   default_action: apply
-  from_scrath: yes
-  quiet_fallback: asis
+  from_scratch: yes
   log: /var/log/beets.log
-  incremental: no
 
 ignore: .AppleDouble ._* *~ .DS_Store
 ignore_hidden: yes
