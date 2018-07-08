@@ -12,3 +12,4 @@ Extend the docker image, add custom config/scripts and mount:
 * Downloads directory at /downloads
 * Plex Directory at /media (Assuming standard Plex library layout of 'Movies',
   'TV Shows', 'Videos', 'Music')
+* Send requests via curl `curl -X POST --data "token=<MYTOKEN>" --data "uri=https://www.youtube.com/watch?v=<MYVIDEO>" --data "type=<Music|Video>" http://<my_ip>:8080/hooks/yt-dl`
