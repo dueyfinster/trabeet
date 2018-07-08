@@ -7,6 +7,10 @@ per_disc_numbering: no
 
 match:
   strong_rec_thresh: 0.35
+  preferred:
+    countries: [US, GB|UK]
+    media: [CD, Digital Media|File]
+    original_year: yes
 
 paths:
     default: $albumartist/$album%aunique{}/$track - $title
