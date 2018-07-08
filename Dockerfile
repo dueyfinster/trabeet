@@ -22,8 +22,8 @@ RUN apt-get update && apt-get install -y transmission-cli \
 	webhook \
 	bs1770gain \
 	nginx \
-	python-pip && \
-	pip install beets
+	python3-pip && \
+	pip3 install beets pylast requests acoustid
 
 # Install filebot
 # Template taken from: https://github.com/filebot/plugins/blob/master/docker/Dockerfile
