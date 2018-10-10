@@ -8,11 +8,11 @@ test -z $2 && echo "need directory destination! $0 <magnet link> <destination>" 
 DOWNLOAD_DIR=/downloads/complete/
 DOWNLOAD_DIR=$DOWNLOAD_DIR/$2
 
-# HOST=trans
-# PORT=9091
+HOST=localhost
+PORT=9091
 TRANSMISSION=/usr/bin/transmission-cli
  
-# SESSID=$(curl --silent --anyauth  "http://$HOST:$PORT/transmission/rpc" | sed 's/.*<code>//g;s/<\/code>.*//g')
-# curl --silent --anyauth --header "$SESSID" "http://$HOST:$PORT/transmission/rpc" -d "{\"method\":\"torrent-add\",\"arguments\":{\"paused\":\"false\",\"filename\":\"$1\"}}"
+SESSID=$(curl --silent --anyauth  "http://$HOST:$PORT/transmission/rpc" | sed 's/.*<code>//g;s/<\/code>.*//g')
+curl --silent --anyauth --header "$SESSID" "http://$HOST:$PORT/transmission/rpc" -d "{\"method\":\"torrent-add\",\"arguments\":{\"paused\":\"false\",\"filename\":\"$1\"}}"
 
-"$TRANSMISSION" -w "$DOWNLOAD_DIR" "$1"
+#"$TRANSMISSION" -w "$DOWNLOAD_DIR" "$1"
