@@ -34,6 +34,7 @@ RUN dpkg -i /opt/filebot_4.7.9_amd64.deb \
 # Add required config files
 COPY config/beets/config.yaml /root/.config/beets/config.yaml
 COPY config/transmission/settings.json /root/.config/transmission-daemon/settings.json
+COPY config/transmission/torrent-finished.sh /root/.config/transmission-daemon/torrent-finished.sh
 COPY config/filebot/filebot.conf /root/.filebot/filebot.conf
 COPY config/webhook/* /opt/webhook/
 
