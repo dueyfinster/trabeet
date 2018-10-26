@@ -1,7 +1,7 @@
 #!/bin/bash
 set -x
 
-BEET=/usr/bin/beet
+BEET=/usr/local/bin/beet
 TRANS_BIN="/usr/bin/transmission-remote"
 
 "$TRANS_BIN" -t "$TR_TORRENT_ID" --remove
