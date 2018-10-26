@@ -6,7 +6,7 @@ TRANS_BIN="/usr/bin/transmission-remote"
 
 "$TRANS_BIN" -t "$TR_TORRENT_ID" --remove
 
-chown 1000:1000 -R "${TR_TORRENT_DIR}"/"${TR_TORRENT_NAME}"
+chown 1000:1000 -R "${TR_TORRENT_DIR}"
 
 if [[ $TR_TORRENT_DIR = *"Music"* ]]; then
     echo "It's music!"
