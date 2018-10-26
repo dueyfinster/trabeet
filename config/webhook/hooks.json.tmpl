@@ -1,0 +1,76 @@
+[
+  {
+    "id": "add-torrent",
+    "execute-command": "/opt/webhook/add-torrent.sh",
+    "command-working-directory": "/opt/webhook",
+    "include-command-output-in-response": true,
+    "pass-arguments-to-command": [
+      {
+        "source": "payload",
+        "name": "uri"
+      },
+      {
+        "source": "payload",
+        "name": "type"
+      }
+    ],
+    "trigger-rule": {
+      "match": {
+        "type": "value",
+        "value": "{{ getenv "WEBHOOK_TOKEN" | js }}",
+        "parameter": {
+          "source": "payload",
+          "name": "token"
+        }
+      }
+    }
+  },
+  {
+    "id": "yt-dl",
+    "execute-command": "/opt/webhook/yt-dl.sh",
+    "command-working-directory": "/media/Videos",
+    "include-command-output-in-response": false,
+    "pass-arguments-to-command": [
+      {
+        "source": "payload",
+        "name": "uri"
+      },
+      {
+        "source": "payload",
+        "name": "type"
+      }
+    ],
+    "trigger-rule": {
+      "match": {
+        "type": "value",
+        "value": "{{ getenv "WEBHOOK_TOKEN" | js }}",
+        "parameter": {
+          "source": "payload",
+          "name": "token"
+        }
+      }
+    }
+  },
+  {
+    "id": "pdf-details",
+    "execute-command": "/opt/webhook/transmission-rpc.sh",
+    "command-working-directory": "/opt/webhook",
+    "include-command-output-in-response": true,
+    "pass-arguments-to-command": [
+      {
+        "source": "payload",
+        "name": "url"
+      }
+    ],
+    "trigger-rule": {
+      "match": {
+        "type": "value",
+        "value": "12345",
+        "parameter": {
+          "source": "payload",
+          "name": "token"
+        }
+      }
+    }
+  }
+]
