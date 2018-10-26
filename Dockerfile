@@ -19,7 +19,6 @@ RUN apt-get update && apt-get install -y transmission-cli \
 	curl \
 	jq \
 	openjdk-8-jre \
-	webhook \
 	bs1770gain \
 	nginx \
 	python3-pip && \
