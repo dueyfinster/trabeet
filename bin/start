@@ -3,9 +3,9 @@
 CONFIG_DIR=/root/.config/transmission
 SETTINGS=$CONFIG_DIR/settings.json
 TRANSMISSION=/usr/bin/transmission-daemon
-TRANSMISSION_CONF="-f --config-dir /root/.config/transmission-daemon --log-debug --logfile /var/log/trans.log --no-portmap --log-info"
+TRANSMISSION_CONF="-f --config-dir /root/.config/transmission-daemon --log-debug --logfile /var/log/trans.log --no-portmap"
 WEBHOOK=/usr/bin/webhook
-WEBHOOK_CONF=/opt/webhook/hooks.json
+WEBHOOK_CONF=/opt/webhook/hooks.json.tmpl
 
 # Start the first process
 $WEBHOOK -template $WEBHOOK_CONF -verbose &
