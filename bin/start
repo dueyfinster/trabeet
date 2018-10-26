@@ -3,11 +3,12 @@
 CONFIG_DIR=/root/.config/transmission
 SETTINGS=$CONFIG_DIR/settings.json
 TRANSMISSION=/usr/bin/transmission-daemon
+TRANSMISSION_CONF="-f --config-dir /root/.config/transmission --log-debug --logfile /var/log/trans.log --no-portmap --log-info"
 WEBHOOK=/usr/bin/webhook
 WEBHOOK_CONF=/opt/webhook/hooks.json
 
 # Start the first process
-$WEBHOOK -hooks $WEBHOOK_CONF -verbose &
+$WEBHOOK -template $WEBHOOK_CONF -verbose &
 status=$?
 if [ $status -ne 0 ]; then
   echo "Failed to start webhook: $status"
@@ -15,7 +16,7 @@ if [ $status -ne 0 ]; then
 fi
 
 # Start the second process
-$TRANSMISSION -f --no-portmap --log-info &
+$TRANSMISSION $TRANSMISSION_CONF &
 status=$?
 if [ $status -ne 0 ]; then
   echo "Failed to start transmission: $status"
