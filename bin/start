@@ -3,7 +3,7 @@
 CONFIG_DIR=/root/.config/transmission
 SETTINGS=$CONFIG_DIR/settings.json
 TRANSMISSION=/usr/bin/transmission-daemon
-TRANSMISSION_CONF="-f --config-dir /root/.config/transmission --log-debug --logfile /var/log/trans.log --no-portmap --log-info"
+TRANSMISSION_CONF="-f --config-dir /root/.config/transmission-daemon --log-debug --logfile /var/log/trans.log --no-portmap --log-info"
 WEBHOOK=/usr/bin/webhook
 WEBHOOK_CONF=/opt/webhook/hooks.json
 
