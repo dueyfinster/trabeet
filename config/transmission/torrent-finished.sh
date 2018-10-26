@@ -11,10 +11,10 @@ if [[ $TR_TORRENT_DIR = *"Music"* ]]; then
     $BEET import /downloads/complete/Music
     plex-refresh 2
 elif [[ $TR_TORRENT_DIR = *"Movie"* ]]; then
-    filebot -rename --output /media/Movies /downloads/complete/Movies
+    filebot -rename --db TheMovieDB --output /media/Movies /downloads/complete/Movies
     plex-refresh 1
 elif [[ $TR_TORRENT_DIR = *"TV"* ]]; then
-    filebot -rename --output /media/TV /downloads/complete/TV
+    filebot -rename --db TheTVDB --output /media/TV /downloads/complete/TV
     plex-refresh 3
 fi
 
