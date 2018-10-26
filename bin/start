@@ -8,7 +8,7 @@ WEBHOOK=/usr/bin/webhook
 WEBHOOK_CONF=/opt/webhook/hooks.json.tmpl
 
 # Start the first process
-$WEBHOOK -template $WEBHOOK_CONF -verbose &
+$WEBHOOK -template -hooks $WEBHOOK_CONF -verbose &
 status=$?
 if [ $status -ne 0 ]; then
   echo "Failed to start webhook: $status"
