@@ -21,8 +21,10 @@ RUN apt-get update && apt-get install -y transmission-cli \
 	openjdk-8-jre \
 	bs1770gain \
 	nginx \
-	python3-pip && \
-	pip3 install beets pylast requests pyacoustid
+	python3-pip \
+	ruby-dev && \
+	pip3 install beets pylast requests pyacoustid && \
+	gem install transmission-rss
 
 # Install filebot
 # Template taken from: https://github.com/filebot/plugins/blob/master/docker/Dockerfile
@@ -39,6 +41,7 @@ COPY config/webhook/* /opt/webhook/
 
 # Add required config file (on build)
 ONBUILD COPY config/nginx /etc/nginx
+ONBUILD COPY config/transmission-rss /root/.config/transmission-rss
 
 # Run start script (on build)
 ONBUILD CMD ["start"]

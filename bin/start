@@ -4,6 +4,8 @@ CONFIG_DIR=/root/.config/transmission
 SETTINGS=$CONFIG_DIR/settings.json
 TRANSMISSION=/usr/bin/transmission-daemon
 TRANSMISSION_CONF="-f --config-dir /root/.config/transmission-daemon --log-debug --no-portmap"
+TRANS_RSS=/usr/local/bin/transmission-rss
+TRANS_RSS_CONF=/root/.config/transmission-rss/config.yml
 WEBHOOK=/usr/bin/webhook
 WEBHOOK_CONF=/opt/webhook/hooks.json.tmpl
 
@@ -22,6 +24,15 @@ if [ $status -ne 0 ]; then
   echo "Failed to start transmission: $status"
   exit $status
 fi
+
+# Start the third process
+$TRANS_RSS -c $TRANS_RSS_CONF &
+status=$?
+if [ $status -ne 0 ]; then
+  echo "Failed to start transmission-rss: $status"
+  exit $status
+fi
+
 
 nginx
 status=$?
