@@ -10,7 +10,7 @@ chown 1000:1000 -R "${TR_TORRENT_DIR}"
 
 if [[ $TR_TORRENT_DIR = *"Music"* ]]; then
     echo "It's music!"
-    $BEET import /downloads/complete/Music
+    $BEET import "${TR_TORRENT_DIR}"/"${TR_TORRENT_NAME}"
     plex-refresh 2
 elif [[ $TR_TORRENT_DIR = *"Movie"* ]]; then
     filebot -rename -non-strict --format "{plex}" --log all --db TheMovieDB --output /media -r "${TR_TORRENT_DIR}"/"${TR_TORRENT_NAME}"
