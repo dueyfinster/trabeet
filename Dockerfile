@@ -6,7 +6,7 @@ EXPOSE 8080
 RUN mkdir -p /watch
 
 # Volumes to expose
-VOLUME ["/media", "/downloads", "/watch"]
+VOLUME ["/media", "/downloads", "/watch", "/root/.config/transmission-rss"]
 
 # Copy Binaries
 COPY bin/* /usr/bin/
@@ -38,10 +38,7 @@ COPY config/transmission/settings.json /root/.config/transmission-daemon/setting
 COPY config/transmission/torrent-finished.sh /root/.config/transmission-daemon/torrent-finished.sh
 COPY config/filebot/filebot.conf /root/.filebot/filebot.conf
 COPY config/webhook/* /opt/webhook/
-
-# Add required config file (on build)
-ONBUILD COPY config/nginx /etc/nginx
-ONBUILD COPY config/transmission-rss /root/.config/transmission-rss
+COPY config/nginx /etc/nginx
 
 # Run start script (on build)
 ONBUILD CMD ["start"]

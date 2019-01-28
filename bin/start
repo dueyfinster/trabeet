@@ -26,6 +26,7 @@ if [ $status -ne 0 ]; then
 fi
 
 # Start the third process
+sed -i -- "s/RSS_URL/$RSS_URL/g" "$TRANS_RSS_CONF"
 $TRANS_RSS -c $TRANS_RSS_CONF &
 status=$?
 if [ $status -ne 0 ]; then
@@ -33,7 +34,7 @@ if [ $status -ne 0 ]; then
   exit $status
 fi
 
-
+echo "$WEB_USER:$WEB_PASSWD" > /etc/nginx/htpasswd
 nginx
 status=$?
 if [ $status -ne 0 ]; then
