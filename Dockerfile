@@ -2,6 +2,9 @@ FROM ubuntu:18.04
 
 EXPOSE 8080
 
+ENV PLEX_HOST=plex
+ENV PLEX_PORT=32400
+
 # Make directories needed
 RUN mkdir -p /watch
 
