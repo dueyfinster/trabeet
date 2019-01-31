@@ -9,7 +9,7 @@ ENV PLEX_PORT=32400
 RUN mkdir -p /watch
 
 # Volumes to expose
-VOLUME ["/media", "/downloads", "/watch", "/root/.config/transmission-rss"]
+VOLUME ["/media", "/downloads", "/watch"]
 
 # Copy Binaries
 COPY bin/* /usr/bin/
