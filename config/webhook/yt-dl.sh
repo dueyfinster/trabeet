@@ -8,8 +8,8 @@ BEET=/usr/local/bin/beet
 
 if [[ $2 = *"Music"* ]]; then
     echo "It's music!"
-    TITLE=$(youtube-dl --extract-audio --audio-format mp3 -o '/downloads/complete/Music/%(title)s-%(id)s.%(ext)s' --print-json --no-warnings "$1" | jq -r .title)
-    $BEET import -q /downloads/complete/Music
+    TITLE=$(youtube-dl --add-metadata -x --extract-audio --audio-format mp3 -o '/downloads/complete/Music/%(title)s-%(id)s.%(ext)s' --print-json --no-warnings "$1" | jq -r .title)
+    $BEET import -q /downloads/complete/Music/$TITLE
     plex-refresh 2
 elif [[ $2 = *"Video"* ]]; then
     TITLE=$(youtube-dl -o '/media/Videos/%(title)s-%(id)s.%(ext)s' --print-json --no-warnings "$1" | jq -r .title)
