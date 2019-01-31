@@ -2,4 +2,4 @@ feeds:
   - url: RSS_URL
     download_path: "/downloads/complete/TV Shows"
 
-seen_file: /root/.config/transmission-rss/seen
+seen_file: /downloads/seen
