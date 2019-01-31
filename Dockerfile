@@ -36,12 +36,11 @@ RUN dpkg -i /opt/filebot_4.7.9_amd64.deb \
     && rm /opt/filebot_4.7.9_amd64.deb
 
 # Add required config files
-COPY config/beets/config.yaml /root/.config/beets/config.yaml
-COPY config/transmission/settings.json /root/.config/transmission-daemon/settings.json
-COPY config/transmission/torrent-finished.sh /root/.config/transmission-daemon/torrent-finished.sh
-COPY config/filebot/filebot.conf /root/.filebot/filebot.conf
-COPY config/webhook/* /opt/webhook/
+COPY config/beets /root/.config/beets
+COPY config/transmission /root/.config/transmission-daemon
+COPY config/filebot /root/.filebot
+COPY config/webhook /opt/webhook/
 COPY config/nginx /etc/nginx
 
 # Run start script (on build)
-ONBUILD CMD ["start"]
+CMD ["start"]
