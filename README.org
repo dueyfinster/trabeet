@@ -3,9 +3,17 @@
 Docker image for downloading for Plex using Transmission & youtube-dl, all
 controlled via webhooks.
 
-webhook (magnet uri) -> Transmission -> Beets/Filebot -> Plex Library
-
-webhook (YouTube URL) -> youtube-dl -> No metadata processing (video) or Beets (Music) -> Plex Library
+#+begin_src ditaa :file flow.png
++------+    +-----------+   +--------------+   +----------+   +---------+
+| curl |--->| Webhook   |-->| Transmission |-->| Beets or |-->| Plex    |
++------+    | (magnet:) |   |              |   | Filebot  |   | Library |
+            +-----------+   +--------------+   +----------+   +---------+
+            
++------+    +-----------+   +--------------+   +---------------+   +---------+
+| curl |--->| Webhook   |-->| youtube-dl   |-->| Beets or      |-->| Plex    |
++------+    | (https:)  |   |              |   | No processing |   | Library |
+            +-----------+   +--------------+   +---------------+   +---------+
+#+end_src
 
 ** To use
 Extend the docker image, add custom config/scripts and mount:
