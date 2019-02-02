@@ -4,15 +4,21 @@ Docker image for downloading for Plex using Transmission & youtube-dl, all
 controlled via webhooks.
 
 #+begin_src ditaa :file flow.png :exports results
-+------+    +-----------+   +--------------+   +----------+   +---------+
-| curl |--->| Webhook   |-->| Transmission |-->| Beets or |-->| Plex    |
-+------+    | (magnet:) |   |              |   | Filebot  |   | Library |
-            +-----------+   +--------------+   +----------+   +---------+
-            
-+------+    +-----------+   +--------------+   +---------------+   +---------+
-| curl |--->| Webhook   |-->| youtube-dl   |-->| Beets or      |-->| Plex    |
-+------+    | (https:)  |   |              |   | No processing |   | Library |
-            +-----------+   +--------------+   +---------------+   +---------+
++--------------------+    +-------------+   +------------------+   +-------------------+   
+|cGRE curl (magnet:) +--->+cYEL         |   |cGRE              |   |cGRE               |
++--------------------+    |   Webhook   +-->+     Download     +-->+  Process Metadata +-----------+
+|c37F curl (https:)  +--->|             |   |   Transmission   |   |  Beets (Music)    |           |
++--------------------+    +-------------+   |                  |   |  Filebot (Video)  |           v
+                                |           +------------------+   +-------------------+   +-------+-------+
+                                |                                                          |cYEL           |
+                                |                                                          |  Plex Library |        
+                                V                                                          |               |
+                          +-----+----------+                 +------------------+          +-------+-------+
+                          |c37F            |                 |c37F              |                  ^
+	                  |    Download    |                 | Process Metadata |                  |
+                          |   youtube-dl   +---------------->+ Beets (Music)    +------------------/
+                          |                |                 | or None (Video)  |   
+                          +----------------+                 +------------------+   
 #+end_src
 
 #+RESULTS:
