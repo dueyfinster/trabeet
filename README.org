@@ -3,7 +3,7 @@
 Docker image for downloading for Plex using Transmission & youtube-dl, all
 controlled via webhooks.
 
-#+begin_src ditaa :file flow.png
+#+begin_src ditaa :file flow.png :exports results
 +------+    +-----------+   +--------------+   +----------+   +---------+
 | curl |--->| Webhook   |-->| Transmission |-->| Beets or |-->| Plex    |
 +------+    | (magnet:) |   |              |   | Filebot  |   | Library |
