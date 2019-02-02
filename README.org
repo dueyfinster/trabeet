@@ -15,6 +15,9 @@ controlled via webhooks.
             +-----------+   +--------------+   +---------------+   +---------+
 #+end_src
 
+#+RESULTS:
+[[file:flow.png]]
+
 ** To use
 Extend the docker image, add custom config/scripts and mount:
 
