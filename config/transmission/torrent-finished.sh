@@ -13,10 +13,10 @@ if [[ $TR_TORRENT_DIR = *"Music"* ]]; then
     $BEET import "${TR_TORRENT_DIR}"/"${TR_TORRENT_NAME}"
     plex-refresh 2
 elif [[ $TR_TORRENT_DIR = *"Movie"* ]]; then
-    filebot -rename -non-strict --format "{plex}" --log all --db TheMovieDB --output /media -r "${TR_TORRENT_DIR}"/"${TR_TORRENT_NAME}"
+    filebot -rename -non-strict --format "{plex}" --log all --db TheMovieDB --output /video -r "${TR_TORRENT_DIR}"/"${TR_TORRENT_NAME}"
     plex-refresh 1
 elif [[ $TR_TORRENT_DIR = *"TV"* ]]; then
-    filebot -rename -non-strict --format "{plex}" --log all --db TheTVDB --output /media -r "${TR_TORRENT_DIR}"/"${TR_TORRENT_NAME}"
+    filebot -rename -non-strict --format "{plex}" --log all --db TheTVDB --output /video -r "${TR_TORRENT_DIR}"/"${TR_TORRENT_NAME}"
     plex-refresh 3
 fi
 
