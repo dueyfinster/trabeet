@@ -1,5 +1,5 @@
 plugins: fetchart embedart convert scrub replaygain lastgenre chroma web
-directory: /media/Music
+directory: /music
 art_filename: albumart
 threaded: yes
 original_date: no
