@@ -12,7 +12,7 @@ if [[ $2 = *"Music"* ]]; then
     $BEET import -q /downloads/complete/Music/$TITLE
     plex-refresh 2
 elif [[ $2 = *"Video"* ]]; then
-    TITLE=$(youtube-dl -o '/media/Videos/%(title)s-%(id)s.%(ext)s' --print-json --no-warnings "$1" | jq -r .title)
+    TITLE=$(youtube-dl --format "bestvideo+bestaudio[ext=m4a]/bestvideo+bestaudio/best" --merge-output-format mp4 -o '/media/Videos/%(title)s-%(id)s.%(ext)s' --print-json --no-warnings "$1" | jq -r .title)
     plex-refresh 7
 fi
 
