@@ -18,7 +18,6 @@ RUN apt-get update && apt-get install -y transmission-cli \
 	transmission-common \
 	transmission-daemon \
 	ffmpeg \
-	youtube-dl \
 	curl \
 	jq \
 	openjdk-8-jre \
@@ -26,7 +25,7 @@ RUN apt-get update && apt-get install -y transmission-cli \
 	nginx \
 	python3-pip \
 	ruby-dev && \
-	pip3 install beets pylast requests pyacoustid && \
+	pip3 install youtube-dl beets pylast requests pyacoustid && \
 	gem install transmission-rss
 
 # Install filebot
