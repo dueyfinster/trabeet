@@ -10,14 +10,14 @@ chown 1000:1000 -R "${TR_TORRENT_DIR}"
 
 if [[ $TR_TORRENT_DIR = *"Music"* ]]; then
     echo "It's music!"
-    $BEET import "${TR_TORRENT_DIR}"/"${TR_TORRENT_NAME}"
-    plex-refresh 2
+    $BEET import "${TR_TORRENT_DIR}"/"${TR_TORRENT_NAME}" && \
+        plex-refresh $PLEX_MUSIC_LIB_ID
 elif [[ $TR_TORRENT_DIR = *"Movie"* ]]; then
-    filebot -rename -non-strict --format "{plex}" --log all --db TheMovieDB --output /video -r "${TR_TORRENT_DIR}"/"${TR_TORRENT_NAME}"
-    plex-refresh 1
+    filebot -rename -non-strict --format "{plex}" --log all --db TheMovieDB --output /video -r "${TR_TORRENT_DIR}"/"${TR_TORRENT_NAME}" && \
+        plex-refresh $PLEX_MOVIES_LIB_ID
 elif [[ $TR_TORRENT_DIR = *"TV"* ]]; then
-    filebot -rename -non-strict --format "{plex}" --log all --db TheTVDB --output /video -r "${TR_TORRENT_DIR}"/"${TR_TORRENT_NAME}"
-    plex-refresh 3
+    filebot -rename -non-strict --format "{plex}" --log all --db TheTVDB --output /video -r "${TR_TORRENT_DIR}"/"${TR_TORRENT_NAME}" && \
+        plex-refresh $PLEX_TV_LIB_ID
 fi
 
 /usr/bin/pushover "$TR_TORRENT_NAME is complete"
