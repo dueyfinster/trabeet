@@ -8,7 +8,7 @@ BEET=/usr/local/bin/beet
 
 if [[ $2 = *"Audio"* ]]; then
     TITLE=$(youtube-dl --add-metadata -x --extract-audio --audio-format mp3 -o '/downloads/music/%(title)s-%(id)s.%(ext)s' --print-json --no-warnings "$1" | jq -r .title) && \
-        $BEET import -q /downloads/music/$TITLE && \
+        $BEET import -q /downloads/music/"$TITLE" && \
         plex-refresh $PLEX_MUSIC_LIB_ID
 elif [[ $2 = *"Movie"* ]]; then
     TITLE=$(youtube-dl --format "bestvideo+bestaudio[ext=m4a]/bestvideo+bestaudio/best" --merge-output-format mp4 -o '/downloads/video/%(title)s-%(id)s.%(ext)s' --print-json --no-warnings "$1" | jq -r .title) && \
