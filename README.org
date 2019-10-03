@@ -1,6 +1,6 @@
 #+TITLE:     trabeet
 #+AUTHOR:    Neil Grogan
-Docker image for downloading for Plex using Transmission & youtube-dl, all
+[[https://cloud.docker.com/repository/registry-1.docker.io/dueyfinster/trabeet/builds][Docker image]] for downloading for Plex using Transmission & youtube-dl, all
 controlled via webhooks.
 
 #+begin_src ditaa :file flow.png :exports results
