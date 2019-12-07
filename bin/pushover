@@ -1,5 +1,8 @@
 #!/bin/bash
-test -z $1 && echo "need message to send! $0 <message>" && exit 1
+if [ $# -eq 0 ]
+  then
+    echo "need message to send! $0 <message>" && exit 1
+fi
 
 curl -s \
   --form-string "token=$PUSHOVER_TOKEN" \
