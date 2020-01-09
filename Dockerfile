@@ -30,9 +30,9 @@ RUN apt-get update && apt-get install -y transmission-cli \
 
 # Install filebot
 # Template taken from: https://github.com/filebot/plugins/blob/master/docker/Dockerfile
-COPY pkgs/filebot_4.7.9_amd64.deb /opt/
-RUN dpkg -i /opt/filebot_4.7.9_amd64.deb \
-    && rm /opt/filebot_4.7.9_amd64.deb
+COPY pkgs/filebot_4.7.9_amd64p.deb /opt/
+RUN dpkg -i /opt/filebot_4.7.9_amd64p.deb \
+    && rm /opt/filebot_4.7.9_amd64p.deb
 
 # Add required config files
 COPY config/beets /root/.config/beets
