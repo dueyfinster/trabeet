@@ -37,6 +37,7 @@ RUN dpkg -i /opt/filebot_4.7.9_amd64p.deb \
 # Add required config files
 COPY config/beets /root/.config/beets
 COPY config/transmission /root/.config/transmission-daemon
+COPY config/transmission-rss /root/.config/transmission-rss
 COPY config/filebot /root/.filebot
 COPY config/webhook /opt/webhook/
 COPY config/nginx /etc/nginx
