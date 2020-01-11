@@ -1,8 +1,8 @@
 [
   {
     "id": "add-torrent",
-    "execute-command": "/opt/webhook/add-torrent.sh",
-    "command-working-directory": "/opt/webhook",
+    "execute-command": "/root/.config/webhook/add-torrent.sh",
+    "command-working-directory": "/root/.config/webhook",
     "include-command-output-in-response": true,
     "pass-arguments-to-command": [
       {
@@ -27,8 +27,8 @@
   },
   {
     "id": "yt-dl",
-    "execute-command": "/opt/webhook/yt-dl.sh",
-    "command-working-directory": "/opt/webhook",
+    "execute-command": "/root/.config/webhook/yt-dl.sh",
+    "command-working-directory": "/root/.config/webhook",
     "include-command-output-in-response": false,
     "pass-arguments-to-command": [
       {
@@ -53,8 +53,8 @@
   },
   {
     "id": "pdf-details",
-    "execute-command": "/opt/webhook/transmission-rpc.sh",
-    "command-working-directory": "/opt/webhook",
+    "execute-command": "/root/.config/webhook/transmission-rpc.sh",
+    "command-working-directory": "/root/.config/webhook",
     "include-command-output-in-response": true,
     "pass-arguments-to-command": [
       {
