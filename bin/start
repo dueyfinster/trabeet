@@ -26,7 +26,7 @@ if [ $status -ne 0 ]; then
 fi
 
 # Replace RSS_URL with variable
-sed -i -- "s/RSS_URL/$RSS_URL/g" "$TRANS_RSS_CONF"
+sed -i "s#RSS_URL#$RSS_URL#g" "$TRANS_RSS_CONF"
 # Start the third process
 $TRANS_RSS -c $TRANS_RSS_CONF &
 status=$?
