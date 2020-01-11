@@ -7,7 +7,7 @@ TRANSMISSION_CONF="-f --config-dir /root/.config/transmission-daemon --log-debug
 TRANS_RSS=/usr/local/bin/transmission-rss
 TRANS_RSS_CONF=/root/.config/transmission-rss/config.yml
 WEBHOOK=/usr/bin/webhook
-WEBHOOK_CONF=/opt/webhook/hooks.json.tmpl
+WEBHOOK_CONF=/root/.config/webhook/hooks.json.tmpl
 
 # Start the first process
 $WEBHOOK -template -hooks $WEBHOOK_CONF -verbose &
