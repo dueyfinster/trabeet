@@ -1,5 +1,5 @@
 feeds:
   - url: RSS_URL
-    download_path: "/downloads/tv"
+    download_path: "/downloads/complete/tv"
 
 seen_file: /downloads/seen
