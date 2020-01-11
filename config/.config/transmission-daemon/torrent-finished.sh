@@ -8,8 +8,8 @@ FILEBOT_CMD="filebot -rename -non-strict --format \"{plex}\" --log all --output 
 
 chown 1000:1000 -R "${TR_TORRENT_DIR}"
 
-local TORRENT_DIR=$(echo $TR_TORRENT_DIR | tr '[:upper:]' '[:lower:]')
-local TORRENT_FULL_PATH="${TR_TORRENT_DIR}/${TR_TORRENT_NAME}"
+TORRENT_DIR=$(echo $TR_TORRENT_DIR | tr '[:upper:]' '[:lower:]')
+TORRENT_FULL_PATH="${TR_TORRENT_DIR}/${TR_TORRENT_NAME}"
 
 if [[ $TORRENT_DIR = *"music"* ]]; then
     echo "It's music!"
