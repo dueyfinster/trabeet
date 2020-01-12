@@ -35,7 +35,7 @@ if [ $status -ne 0 ]; then
   exit $status
 fi
 
-echo "$WEB_USER:$WEB_PASSWD" > /etc/nginx/htpasswd
+printf "$WEB_USER:$(openssl passwd -apr1 $WEB_PASSWD)\n" > /etc/nginx/htpasswd
 nginx
 status=$?
 if [ $status -ne 0 ]; then
