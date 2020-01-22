@@ -6,7 +6,7 @@ TRANS_BIN="/usr/bin/transmission-remote"
 FILEBOT_CMD="filebot -rename -non-strict --format \"{plex}\" --log all --output /video"
 "$TRANS_BIN" -t "$TR_TORRENT_ID" --remove
 
-chown 1000:1000 -R "${TR_TORRENT_DIR}"
+chown $PERM_UID:$PERM_GID -R "${TR_TORRENT_DIR}"
 
 TORRENT_DIR=$(echo $TR_TORRENT_DIR | tr '[:upper:]' '[:lower:]')
 TORRENT_FULL_PATH="${TR_TORRENT_DIR}/${TR_TORRENT_NAME}"
