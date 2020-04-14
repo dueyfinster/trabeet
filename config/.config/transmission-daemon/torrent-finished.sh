@@ -6,7 +6,7 @@ TRANS_BIN="/usr/bin/transmission-remote"
 FILEBOT_CMD="filebot -rename -non-strict --format \"{plex}\" --log all --output /video"
 "$TRANS_BIN" -t "$TR_TORRENT_ID" --remove
 
-chown $PERM_UID:$PERM_GID -R "${TR_TORRENT_DIR}"
+
 
 TORRENT_DIR=$(echo $TR_TORRENT_DIR | tr '[:upper:]' '[:lower:]')
 TORRENT_FULL_PATH="${TR_TORRENT_DIR}/${TR_TORRENT_NAME}"
@@ -22,5 +22,7 @@ elif [[ $TORRENT_DIR = *"tv"* ]]; then
     echo "It's a tv show!"
     $FILEBOT_CMD --db TheTVDB -r "${TORRENT_FULL_PATH}" && plex-refresh $PLEX_TV_LIB_ID
 fi
+
+chown $PERM_UID:$PERM_GID -R /video /music
 
 /usr/bin/pushover "$TR_TORRENT_NAME is complete"
