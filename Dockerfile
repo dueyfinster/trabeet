@@ -31,3 +31,5 @@ RUN apt-get update && apt-get install -y transmission-cli \
 COPY pkgs/filebot_4.7.9_amd64p.deb /opt/
 RUN dpkg -i /opt/filebot_4.7.9_amd64p.deb \
     && rm /opt/filebot_4.7.9_amd64p.deb
+    
+    
