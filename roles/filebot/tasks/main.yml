@@ -1,0 +1,19 @@
+---
+- name: Create Filebot cofiguration directory
+  file:
+    path: ~/.filebot/
+    state: directory
+- name: Copy Filebot config files to home directory
+  copy:
+    src: filebot.conf
+    dest: ~/.filebot/filebot.conf
+    mode: 0600
+  register: filebot_config_file
+- name: Copy Filebot DEB to install
+  copy:
+    src: filebot_4.7.9_amd64p.deb
+    dest: /tmp/filebot_4.7.9_amd64p.deb
+    mode: 0700
+- name: Install Filebot from local .deb
+  apt:
+    deb: /tmp/filebot_4.7.9_amd64p.deb

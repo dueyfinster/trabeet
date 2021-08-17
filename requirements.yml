@@ -1,0 +1,6 @@
+---
+roles:
+  - name: geerlingguy.java
+
+collections:  
+  - name: community.general
