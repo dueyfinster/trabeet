@@ -1,28 +1,35 @@
-#+TITLE:     trabeet
+#+TITLE:     trabeet container (Built with Ansible)
 #+AUTHOR:    Neil Grogan
 [[https://cloud.docker.com/repository/registry-1.docker.io/dueyfinster/trabeet/builds][Docker image]] for downloading for Plex using Transmission & youtube-dl, all
 controlled via webhooks.
 
-#+begin_src ditaa :file flow.png :exports results
-+--------------------+    +-------------+   +------------------+   +-------------------+   
-|cGRE curl (magnet:) +--->+cYEL         |   |cGRE              |   |cGRE               |
-+--------------------+    |   Webhook   +-->+     Download     +-->+  Process Metadata +-----------+
-|c37F curl (https:)  +--->|             |   |   Transmission   |   |  Beets (Music)    |           |
-+--------------------+    +-------------+   |                  |   |  Filebot (Video)  |           v
-                                |           +------------------+   +-------------------+   +-------+-------+
-                                |                                                          |cYEL {s}       |
-                                |                                                          |  Plex Library |        
-                                V                                                          |               |
-                          +-----+----------+                 +------------------+          +-------+-------+
-                          |c37F            |                 |c37F              |                  ^
-	                  |    Download    |                 | Process Metadata |                  |
-                          |   youtube-dl   +---------------->+ Beets (Music)    +------------------/
-                          |                |                 | or None (Video)  |   
-                          +----------------+                 +------------------+   
+This project is composed of two main parts:
+
+  - *Ansible project*: This project is maintained on GitHub: [[https://github.com/dueyfinster/trabeet][dueyfinster/trabeet]]. Please file issues, support requests, etc. against this GitHub repository.
+  - *Docker Hub Image*: If you just want to use [[https://hub.docker.com/r/dueyfinster/trabeet/][the `dueyfinster/trabeet` Docker image]] in your project, you can pull it from Docker Hub.
+
+** Diagram
+#+begin_src ditaa :file flow.svg :exports results
++--------------------+    +-------------+   +-------------+   +------------------+   +-------------------+   
+|cGRE curl (magnet:) +--->|cYEL         |   |cYEL         |   |cGRE              |   |cGRE               |
++--------------------+    |    Nginx    +-->|   Webhook   +-->+     Download     +-->+  Process Metadata +--------------+
+|c37F curl (https:)  +--->|    (8080)   |   |             |   |   Transmission   |   |  Beets (Music)    |              |
++--------------------+    +---+-----+---+   +-------------+   |                  |   |  Filebot (Video)  |              v
+                              ^     |              |          +-------+----------+   +-------------------+      +-------+-------+
+                              |     |              |                  ^                                         |cYEL {s}       |
+                              |     |              |                  |                                         |  Plex Library |        
+                       +---------+  \--------------|------------------/                                         |               |
+                       |   Web   |                 V                                                            +-------+-------+
+                       |  Browser|        +--------+-------+                 +------------------+                       ^
+	               +---------+        |c37F            |                 |c37F              |                       |
+                                          |    Download    |                 | Process Metadata |                       |
+                                          |   youtube-dl   +---------------->+ Beets (Music)    +-----------------------/                    
+                                          |                |                 | or None (Video)  |   
+                                          +----------------+                 +------------------+
 #+end_src
 
 #+RESULTS:
-[[file:flow.png]]
+[[file:flow.svg]]
 
 ** To use
 Extend the docker image, add custom config/scripts and mount:
