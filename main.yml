@@ -71,7 +71,8 @@
     - name: Clean up the container.
       shell: >
         apt-get remove --purge -y python &&
-        rm -rf /var/lib/apt/lists/*
+        rm -rf /var/lib/apt/lists/* &&
+        rm -rf /tmp/*
       delegate_to: '{{ container_name }}'
       args:
         warn: no
