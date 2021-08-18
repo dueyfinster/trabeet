@@ -1,0 +1,6 @@
+---
+- name: Copy pushhover script to /usr/bin
+  copy:
+    src: pushover
+    dest: /usr/bin/pushover
+    mode: 0775

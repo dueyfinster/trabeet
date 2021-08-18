@@ -1,0 +1,6 @@
+---
+- name: Copy plex-refresh script to /usr/bin
+  copy:
+    src: plex-refresh
+    dest: /usr/bin/plex-refresh
+    mode: 0775

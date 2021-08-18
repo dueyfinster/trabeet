@@ -57,6 +57,10 @@
       delegate_to: '{{ container_name }}'
     - name: nginx
       delegate_to: '{{ container_name }}'
+    - name: pushover
+      delegate_to: '{{ container_name }}'
+    - name: plex-refresh
+      delegate_to: '{{ container_name }}'
     - name: beets
       delegate_to: '{{ container_name }}'
     - name: filebot
