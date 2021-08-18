@@ -73,6 +73,8 @@
       delegate_to: '{{ container_name }}'
 
   roles:
+    - name: beets
+      delegate_to: '{{ container_name }}'
     - name: filebot
       delegate_to: '{{ container_name }}'
 

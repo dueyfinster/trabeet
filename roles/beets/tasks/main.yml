@@ -1,0 +1,33 @@
+---
+- name: Install FFMPEG for Music Conversion
+  package:
+    name: ffmpeg
+    state: present
+- name: Install bs1770gain for replay gain
+  package:
+    name: bs1770gain
+    state: present
+- name: Install pyacoustid for Music Identification
+  pip:
+    name: pyacoustid 
+    state: present
+- name: Install Beets Package
+  pip:
+    name: beets 
+    state: present
+- name: Create Beets Configuration Directory
+  file:
+    path: ~/.config/beets
+    state: directory
+- name: Copy Beets Music Tagging Script
+  copy:
+    src: beets.sh
+    dest: ~/.config/beets/beets.sh
+    mode: 0775
+  register: beets_tagging_script
+- name: Copy Beets config file to home directory
+  copy:
+    src: config.yaml
+    dest: ~/.config/beets/config.yaml
+    mode: 0600
+  register: beets_config_file
