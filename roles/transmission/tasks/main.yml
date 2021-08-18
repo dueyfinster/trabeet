@@ -1,0 +1,42 @@
+---
+- name: Install Transmission CLI Package
+  package:
+    name: transmission-cli
+    state: present
+- name: Install Transmission Common Package
+  package:
+    name: transmission-common
+    state: present
+- name: Install Transmission Daemon Package
+  package:
+    name: transmission-daemon
+    state: present
+- name: Create transmission daemon config directory
+  file:
+    path: ~/.config/transmission-daemon
+    state: directory
+- name: Copy transmission daemon config file to home directory
+  copy:
+    src: transmission-daemon/settings.json
+    dest: ~/.config/transmission-daemon/settings.json
+    mode: 0600
+  register: trans_daemon_config_file
+- name: Copy transmission daemon torrent-finished script to home directory
+  copy:
+    src: transmission-daemon/torrent-finished.sh
+    dest: ~/.config/transmission-daemon/torrent-finished.sh
+    mode: 0755
+- name: Install latest available version of transmission-rss
+  community.general.gem:
+    name: transmission-rss
+    state: latest
+- name: Create transmission rss config directory
+  file:
+    path: ~/.config/transmission-rss
+    state: directory
+- name: Copy transmission rss config file to home directory
+  copy:
+    src: transmission-rss/config.yml
+    dest: ~/.config/transmission-rss/config.yml
+    mode: 0600
+  register: trans_rss_config_file

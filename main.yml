@@ -71,6 +71,8 @@
       delegate_to: '{{ container_name }}'
     - name: webhook
       delegate_to: '{{ container_name }}'
+    - name: transmission
+      delegate_to: '{{ container_name }}'
     - name: beets
       delegate_to: '{{ container_name }}'
     - name: filebot
