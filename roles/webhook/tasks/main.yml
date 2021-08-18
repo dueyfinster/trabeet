@@ -1,0 +1,26 @@
+---
+- name: Create Webhook cofiguration directory
+  file:
+    path: ~/.config/webhook
+    state: directory
+- name: Copy Webhook config file to home directory
+  copy:
+    src: hooks.json.tmpl
+    dest: ~/.config/webhook/hooks.json.tmpl
+    mode: 0600
+  register: webhook_config_file
+- name: Copy add-torrent.sh script
+  copy:
+    src: add-torrent.sh
+    dest: ~/.config/webhook/add-torrent.sh
+    mode: 0775
+- name: Copy yt-dl.sh script
+  copy:
+    src: yt-dl.sh
+    dest: ~/.config/webhook/yt-dl.sh
+    mode: 0775
+- name: Copy Webhook binary to /usr/bin
+  copy:
+    src: webhook
+    dest: /usr/bin/webhook
+    mode: 0775
