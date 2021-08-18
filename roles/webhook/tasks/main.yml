@@ -1,4 +1,8 @@
 ---
+- name: Install JQ
+  package:
+    name: jq
+    state: present
 - name: Create Webhook cofiguration directory
   file:
     path: ~/.config/webhook

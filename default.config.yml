@@ -9,6 +9,5 @@ ansible_python_interpreter: /usr/bin/python3
 # Handy utilities.
 pkgs_to_install:
   - curl
-  - jq
   - python3-pip
   - ruby-dev
