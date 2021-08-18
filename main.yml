@@ -81,6 +81,7 @@
       command: >
         docker commit
         -c 'CMD ["/usr/bin/start"]'
+        -c 'VOLUME ["/music", "/video", "/downloads", "/watch"]'
         {{ container_name }} {{ image_namespace }}/{{ image_name }}:latest
 
     - name: Remove the container.
