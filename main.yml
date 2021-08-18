@@ -41,12 +41,6 @@
       with_items: "{{ pkgs_to_install }}"
       delegate_to: '{{ container_name }}'
 
-    - name: Install Python packages
-      pip:
-        name: "{{ python_packages }}"
-        state: present
-      delegate_to: '{{ container_name }}'
-
     - name: Install latest available version of transmission-rss
       community.general.gem:
         name: transmission-rss
@@ -73,6 +67,8 @@
       delegate_to: '{{ container_name }}'
 
   roles:
+    - name: youtube-dl
+      delegate_to: '{{ container_name }}'
     - name: beets
       delegate_to: '{{ container_name }}'
     - name: filebot

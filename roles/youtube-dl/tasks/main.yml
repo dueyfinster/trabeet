@@ -1,0 +1,15 @@
+---
+- name: Install youtube-dl
+  pip:
+    name: youtube-dl 
+    state: present
+- name: Create youtube-dl Configuration Directory
+  file:
+    path: ~/.config/youtube-dl
+    state: directory
+- name: Copy youtube-dl config file to home directory
+  copy:
+    src: youtube-dl.conf
+    dest: ~/.config/youtube-dl/config
+    mode: 0600
+  register: youtubedl_config_file

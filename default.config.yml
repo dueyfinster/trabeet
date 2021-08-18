@@ -16,7 +16,3 @@ pkgs_to_install:
   - nginx
   - python3-pip
   - ruby-dev
-
-python_packages:
-  - youtube-dl 
-  - requests
