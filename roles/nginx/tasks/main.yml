@@ -1,0 +1,17 @@
+---
+- name: Install Nginx Package
+  package:
+    name: nginx
+    state: present
+- name: Copy nginx config file
+  copy:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
+    mode: 0600
+  register: nginx_config_file
+- name: Copy htpasswd config file
+  copy:
+    src: htpasswd
+    dest: /etc/nginx/htpasswd
+    mode: 0600
+  register: htpasswd_file

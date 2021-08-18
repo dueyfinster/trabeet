@@ -41,29 +41,11 @@
       with_items: "{{ pkgs_to_install }}"
       delegate_to: '{{ container_name }}'
 
-    - name: Install latest available version of transmission-rss
-      community.general.gem:
-        name: transmission-rss
-        state: latest
-      delegate_to: '{{ container_name }}'
-
     - name: Copy Binaries to /usr/bin
       copy:
         src: bin/
         dest: /usr/bin
         mode: 0755
-      delegate_to: '{{ container_name }}'
-    - name: Copy Config files to home directory
-      copy:
-        src: config/
-        dest: /root/
-        mode: 0600
-      delegate_to: '{{ container_name }}'
-    - name: Copy NGINX config
-      copy:
-        src: config/nginx
-        dest: /etc/nginx
-        mode: 0660
       delegate_to: '{{ container_name }}'
 
   roles:
@@ -72,6 +54,8 @@
     - name: webhook
       delegate_to: '{{ container_name }}'
     - name: transmission
+      delegate_to: '{{ container_name }}'
+    - name: nginx
       delegate_to: '{{ container_name }}'
     - name: beets
       delegate_to: '{{ container_name }}'
