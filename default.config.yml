@@ -1,0 +1,27 @@
+---
+base_image: ubuntu:18.04
+container_name: trabeet_build_container
+image_namespace: dueyfinster
+image_name: trabeet
+
+ansible_python_interpreter: /usr/bin/python3
+
+# Handy utilities.
+pkgs_to_install:
+  - transmission-cli
+  - transmission-common
+  - transmission-daemon
+  - ffmpeg
+  - curl
+  - jq
+  - bs1770gain
+  - nginx
+  - python3-pip
+  - ruby-dev
+
+python_packages:
+  - youtube-dl 
+  - beets 
+  - pylast 
+  - requests
+  - pyacoustid
