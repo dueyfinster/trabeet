@@ -82,6 +82,7 @@
         docker commit
         -c 'CMD ["/usr/bin/start"]'
         -c 'VOLUME ["/music", "/video", "/downloads", "/watch"]'
+        -c 'EXPOSE 8080'
         {{ container_name }} {{ image_namespace }}/{{ image_name }}:latest
 
     - name: Remove the container.
