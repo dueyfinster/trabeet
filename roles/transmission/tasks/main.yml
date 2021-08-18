@@ -15,6 +15,10 @@
   file:
     path: ~/.config/transmission-daemon
     state: directory
+- name: Create transmission daemon watch directory
+  file:
+    path: /watch
+    state: directory
 - name: Copy transmission daemon config file to home directory
   copy:
     src: transmission-daemon/settings.json
