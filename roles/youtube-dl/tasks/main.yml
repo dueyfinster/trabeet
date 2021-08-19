@@ -1,7 +1,7 @@
 ---
 - name: Install youtube-dl
   pip:
-    name: youtube-dl 
+    name: youtube-dl
     state: present
 - name: Create youtube-dl Configuration Directory
   file:

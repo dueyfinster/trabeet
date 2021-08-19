@@ -1,7 +1,7 @@
 ---
 - hosts: localhost
   connection: local
-  gather_facts: no
+  gather_facts: false
 
   vars_files:
     - default.config.yml
@@ -75,7 +75,7 @@
         rm -rf /tmp/*
       delegate_to: '{{ container_name }}'
       args:
-        warn: no
+        warn: false
 
     - name: Commit the container.
       command: >
