@@ -9,3 +9,8 @@ rules:
 ignore: |
   .github/stale.yml
   .travis.yml
+  .drone.yml
+  docker-compose-sample.yml
+  roles/beets/files/config.yaml
+  roles/beets/files/config-old.yaml
+  roles/transmission/files/transmission-rss/config.yml

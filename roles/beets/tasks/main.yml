@@ -9,11 +9,11 @@
     state: present
 - name: Install pyacoustid for Music Identification
   pip:
-    name: pyacoustid 
+    name: pyacoustid
     state: present
 - name: Install Beets Package
   pip:
-    name: beets 
+    name: beets
     state: present
 - name: Create Beets Configuration Directory
   file:

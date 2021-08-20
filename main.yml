@@ -49,7 +49,7 @@
       delegate_to: '{{ container_name }}'
 
   roles:
-    - name: youtube-dl
+    - name: youtube_dl
       delegate_to: '{{ container_name }}'
     - name: webhook
       delegate_to: '{{ container_name }}'
